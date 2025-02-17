@@ -18,7 +18,7 @@ class lfg_solo_announce : public PlayerScript
 public:
     lfg_solo_announce() : PlayerScript("lfg_solo_announce") {}
 
-    void OnLogin(Player* player) override
+    void OnPlayerLogin(Player* player) override
     {
         // Announce Module
         if (sConfigMgr->GetOption<bool>("SoloLFG.Announce", true))
@@ -27,7 +27,7 @@ public:
         }
     }
 
-    void OnRewardKillRewarder(Player* /*player*/, KillRewarder* /*rewarder*/, bool isDungeon, float& rate) override
+    void OnPlayerRewardKillRewarder(Player* /*player*/, KillRewarder* /*rewarder*/, bool isDungeon, float& rate) override
     {
         if (!isDungeon
             || !sConfigMgr->GetOption<bool>("SoloLFG.Enable", true)
